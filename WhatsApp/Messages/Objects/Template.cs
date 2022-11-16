@@ -1,7 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 using WhatsApp.Intl;
 using WhatsApp.Messages.Objects.Components;
-using WhatsApp.Messages.Objects.Parameters;
 
 namespace WhatsApp.Messages.Objects
 {
@@ -34,7 +33,10 @@ namespace WhatsApp.Messages.Objects
         public FooterComponent? Footer => components.FirstOrDefault(c => c.Type == "footer") as FooterComponent;
 
         [JsonIgnore]
-        public BodyComponent? Body => components.FirstOrDefault(c => c.Type == "body") as BodyComponent;        
+        public BodyComponent? Body => components.FirstOrDefault(c => c.Type == "body") as BodyComponent;
+
+        [JsonIgnore]
+        public IEnumerable<ButtonComponent>? Buttons => components.Where(c => c.Type == "button")?.Cast<ButtonComponent>();
 
     }
 }

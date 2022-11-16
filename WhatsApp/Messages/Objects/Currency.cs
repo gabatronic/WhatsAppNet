@@ -42,6 +42,33 @@ namespace WhatsApp.Messages.Objects
         public string Code { get; }
 
         [JsonPropertyName("amount_1000")]
-        public int Amount { get; }
+        public int Amount { get; private set; }
+
+        public void SetAmount(double amount)
+        {
+            Amount = Convert.ToInt32(amount  * 1000);
+        }
+        public void SetAmount(decimal amount)
+        {
+            Amount = Convert.ToInt32(amount  * 1000);
+        }
+        public void SetAmount(float amount)
+        {
+            Amount = Convert.ToInt32(amount  * 1000);
+        }
+        public void SetAmount(long amount)
+        {
+            Amount = Convert.ToInt32(amount  * 1000);
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj is null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != GetType()) return false;
+            
+            var currA = obj as Currency;
+            
+            return currA?.Code == Code && currA?.Amount == this.Amount;
+        }
     }
 }

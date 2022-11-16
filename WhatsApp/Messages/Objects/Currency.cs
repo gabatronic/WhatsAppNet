@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WhatsApp.Messages.Objects
 {
-    public class Currency
+    public class Currency    
     {
         [JsonIgnore] public static Currency Euro => new Currency("EUR");
 

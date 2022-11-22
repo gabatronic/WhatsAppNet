@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using WhatsApp.Intl;
 using WhatsApp.Messages.Objects;
 
@@ -11,10 +11,10 @@ namespace WhatsApp.Messages
             Template = template;
         }
 
-        [JsonPropertyName("template")]
+        [JsonProperty("template")]
         public Template Template;
 
-        public static MessageTemplate FromTemplate(string templateName, string to, Language? language = null)
+        public static MessageTemplate Create(string templateName, string to, Language? language = null)
         {
             var template = new Template(null, templateName, language);
             return new MessageTemplate(to, template);

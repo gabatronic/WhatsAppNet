@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace WhatsApp.Messages.Objects.Media
 {
     public abstract class MediaBase
     {
-        [JsonPropertyName("id")]
+        [JsonProperty("id")]
         public string? Id;
 
-        [JsonPropertyName("link")]
+        [JsonProperty("link")]
         public string? Link;
 
-        [JsonPropertyName("caption")]
+        [JsonProperty("caption")]
         public string? Caption;
 
-        [JsonPropertyName("filename")] 
+        [JsonProperty("filename")] 
         public string? FileName;
 
         protected MediaBase(string? id = null, string? link = null, string? caption = null, string? filename = null)

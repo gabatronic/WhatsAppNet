@@ -1,7 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 using WhatsApp.Intl;
 using WhatsApp.Messages.Objects.Components;
-using WhatsApp.Messages.Objects.Parameters;
 
 namespace WhatsApp.Messages.Objects
 {
@@ -18,13 +17,13 @@ namespace WhatsApp.Messages.Objects
 
         public string? Namespace { get; }
 
-        [JsonPropertyName("name")]
+        [JsonProperty("name")]
         public string Name { get; }
 
-        [JsonPropertyName("language")]
+        [JsonProperty("language")]
         public Language Language { get; }
 
-        [JsonPropertyName("components")]
+        [JsonProperty("components")]
         public IEnumerable<Component> Components => components;
 
         [JsonIgnore]
@@ -34,7 +33,44 @@ namespace WhatsApp.Messages.Objects
         public FooterComponent? Footer => components.FirstOrDefault(c => c.Type == "footer") as FooterComponent;
 
         [JsonIgnore]
-        public BodyComponent? Body => components.FirstOrDefault(c => c.Type == "body") as BodyComponent;        
+        public BodyComponent? Body => components.FirstOrDefault(c => c.Type == "body") as BodyComponent;
+
+        [JsonIgnore]
+        public IEnumerable<ButtonComponent>? Buttons => components.Where(c => c.Type == "button")?.Cast<ButtonComponent>();
+
+        public HeaderComponent AddHeader()
+        {
+            var header = new HeaderComponent();
+            components.Add(header);
+            return header;
+        }
+
+        public BodyComponent AddBody()
+        {
+            var body = new BodyComponent();
+            components.Add(body);
+            return body;
+        }
+
+        public FooterComponent AddFooter()
+        {
+            var footer = new FooterComponent();
+            components.Add(footer);
+            return footer;
+        }
+
+        public ButtonComponent AddReplyButton(int index, string text)
+        {
+            var button = ButtonComponent.CreateReply(0, text);
+            components.Add(button);
+            return button;
+        }
+        public ButtonComponent AddUrlTextButton(int index, string text)
+        {
+            var button = ButtonComponent.CreateText(index, text);
+            components.Add(button);
+            return button;
+        }
 
     }
 }

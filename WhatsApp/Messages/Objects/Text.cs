@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace WhatsApp.Messages.Object
 {
     public class Text
     {
+        [JsonProperty("body")]
         public string Body { get; }
 
+        [JsonProperty("preview_url")]
         public bool PreviewUrl { get;  }
 
         public Text(string body, bool previewUrl = false)

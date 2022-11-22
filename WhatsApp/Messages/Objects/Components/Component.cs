@@ -1,27 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using WhatsApp.Messages.Objects.Parameters;
 
 namespace WhatsApp.Messages.Objects.Components
 {
     public abstract class Component
     {
-        private IList<ParameterBase> parameters;
+        private IDictionary<int, ParameterBase> parameters;
         protected Component(string type) 
         { 
-            parameters = new List<ParameterBase>();
+            parameters = new Dictionary<int, ParameterBase>();
             Type = type.ToLower();
         }
 
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public string Type { get; }
 
-        [JsonPropertyName("parameters")]
-        public IEnumerable<ParameterBase> Parameters => parameters;
+        [JsonProperty("parameters")]
+        public IDictionary<int, ParameterBase> Parameters => parameters;
 
         public void SetParameter<T>(int index, T parameter) where T : ParameterBase
         {
@@ -33,9 +28,25 @@ namespace WhatsApp.Messages.Objects.Components
             SetParameter(index, new CurrencyParameter(currency));
         }
 
+        public void SetCurrency(int index, double amount, Currency? currency = null)
+        {
+            if (currency == null)
+            {
+                currency = Currency.Euro;
+            }
+                
+            currency.SetAmount(amount);
+            SetParameter(index, new CurrencyParameter(currency));
+        }
+
         public virtual void SetText(int index, string text)
         {
             SetParameter(index, new TextParamenter(text));
+        }
+
+        public virtual void SetDate(int index, DateTime dateTime)
+        {
+            SetParameter(index, new DateParameter(new Date(dateTime)));
         }
 
         public void SetImageFromUrl(int index, string url)

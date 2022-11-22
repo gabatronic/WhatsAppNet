@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace WhatsApp.Messages.Objects.Parameters
 {
@@ -9,7 +9,7 @@ namespace WhatsApp.Messages.Objects.Parameters
             Currency = currency;
         }
 
-        [JsonPropertyName("currency")]
+        [JsonProperty("currency")]
         public Currency Currency { get; }        
     }
 }

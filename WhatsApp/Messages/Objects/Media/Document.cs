@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace WhatsApp.Messages.Objects.Media
 {
     internal class Document: MediaBase
     {
+        [JsonProperty("type")]
         public string Type => "document";
         private Document(string? id = null, string? link = null, string? caption = null, string? filename = null) : base(id, link, caption, filename)
         {

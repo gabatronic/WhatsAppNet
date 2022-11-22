@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace WhatsApp.Messages.Objects.Parameters
 {
@@ -9,7 +9,7 @@ namespace WhatsApp.Messages.Objects.Parameters
             Date = dateTime;
         }
 
-        [JsonPropertyName("date_time")]
+        [JsonProperty("date_time")]
         public Date Date;
     }
 }

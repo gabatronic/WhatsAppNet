@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace WhatsApp.Intl
 {
     public class Language
     {
-        [JsonPropertyName("code")]
+        [JsonProperty("code")]
         public string Code { get; }
 
         private Language(string code) { Code = code; }

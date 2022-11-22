@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace WhatsApp.Messages.Objects
 {
@@ -33,15 +28,15 @@ namespace WhatsApp.Messages.Objects
             FallbackValue = fallback;
         }
 
-        [JsonPropertyName("fallback_vaue")]
+        [JsonProperty("fallback_vaue")]
         public string FallbackValue { get; }
         /// <summary>
         /// ISO 4217 currency code
         /// </summary>
-        [JsonPropertyName("code")]
+        [JsonProperty("code")]
         public string Code { get; }
 
-        [JsonPropertyName("amount_1000")]
+        [JsonProperty("amount_1000")]
         public int Amount { get; private set; }
 
         public void SetAmount(double amount)

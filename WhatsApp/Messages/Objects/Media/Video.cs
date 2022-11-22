@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace WhatsApp.Messages.Objects.Media
 {
     public class Video : MediaBase
     {
+        [JsonProperty("type")]
         public string Type => "video";
 
         private Video(string ? id = null, string ? link = null, string ? caption = null, string ? filename = null) : base (id, link, caption, filename)

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 using WhatsApp.Messages.Objects.Media;
 
 namespace WhatsApp.Messages.Objects.Parameters
@@ -14,6 +10,7 @@ namespace WhatsApp.Messages.Objects.Parameters
             Image = media;            
         }
 
+        [JsonProperty("image")]
         public Image Image;
     }
 }

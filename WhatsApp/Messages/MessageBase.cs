@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
 
 namespace WhatsApp.Messages
 {
     public abstract class MessageBase
     {
-        [JsonPropertyName("type")]
+        [JsonProperty("type")]
         public string Type { get; }
 
-        [JsonPropertyName("to")]
+        [JsonProperty("to")]
         public string To { get; }
 
         protected MessageBase(string type, string to)
@@ -21,7 +16,7 @@ namespace WhatsApp.Messages
             this.To = to;   
         }
 
-        [JsonPropertyName("recipient_type")]
+        [JsonProperty("recipient_type")]
         public string RecipientType => "individual";
     }
 }

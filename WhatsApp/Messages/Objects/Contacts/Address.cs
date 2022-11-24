@@ -9,7 +9,7 @@ namespace WhatsApp.Messages.Objects.Contacts
 {
     public class Address
     {
-        public Address(string? street, string? city, string? state, string? postalCode, string? country, string? countryCode?, string? type) 
+        protected Address(string? street, string? city, string? state, string? postalCode, string? country, string? countryCode?, string? type) 
         { 
             Street = street;
             City = city;
@@ -18,6 +18,10 @@ namespace WhatsApp.Messages.Objects.Contacts
             Country = country;
             CountryCode = countryCode;
             Type = type;
+        }
+        public static Address HomeAddress(string street, string? city, string? postalCode)
+        {
+            return new Address(street, city, null, postalCode, null, null, ContactType.Home.ToString().ToLower());
         }
         
         [JsonProperty("street")]

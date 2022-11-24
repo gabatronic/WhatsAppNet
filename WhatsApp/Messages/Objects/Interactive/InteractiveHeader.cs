@@ -14,6 +14,6 @@ namespace WhatsApp.Messages.Objects.Interactive
         protected InteractiveHeader(string type)
         {
             Type = type;
-        }        
+        }
     }
 }

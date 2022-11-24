@@ -41,7 +41,7 @@ namespace WhatsApp.Messages.Objects.Components
 
         public virtual void SetText(int index, string text)
         {
-            SetParameter(index, new TextParamenter(text));
+            SetParameter(index, new TextParameter(text));
         }
 
         public virtual void SetDate(int index, DateTime dateTime)

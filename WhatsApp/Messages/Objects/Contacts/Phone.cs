@@ -33,7 +33,7 @@ namespace WhatsApp.Messages.Objects.Contacts
         public Phone (string number, string? whatsappId = null)
         {
             PhoneNumber = number;
-            WhatsappId = whatsappId);
+            WhatsappId = whatsappId;
             Type = PhoneType.Main.ToString().ToLower();
         }
 

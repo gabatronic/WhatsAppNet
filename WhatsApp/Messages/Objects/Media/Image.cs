@@ -13,6 +13,6 @@ namespace WhatsApp.Messages.Objects.Media
 
         public static Image FromUrl(string url, string? caption = null) => new Image(null, url, caption);
 
-        public static Image FromId(string id) => new Image(id);        
+        public static Image FromId(string id, string? caption = null) => new Image(id, null, caption);
     }
 }

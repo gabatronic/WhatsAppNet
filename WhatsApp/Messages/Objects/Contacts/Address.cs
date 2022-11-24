@@ -9,7 +9,7 @@ namespace WhatsApp.Messages.Objects.Contacts
 {
     public class Address
     {
-        protected Address(string? street, string? city, string? state, string? postalCode, string? country, string? countryCode?, string? type) 
+        protected Address(string? street, string? city, string? state, string? postalCode, string? country, string? countryCode, string? type) 
         { 
             Street = street;
             City = city;

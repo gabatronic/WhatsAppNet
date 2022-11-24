@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WhatsApp.Messages.Objects.Media
 {
-    internal class Document: MediaBase
+    public class Document: MediaBase
     {
         [JsonProperty("type")]
         public string Type => "document";
@@ -17,6 +17,6 @@ namespace WhatsApp.Messages.Objects.Media
 
         public static Document FromUrl(string url, string? caption = null) => new Document(null, url, caption);
 
-        public static Document FromId(string id) => new Document(id);
+        public static Document FromId(string id, string? caption = null) => new Document(id, null, caption);
     }
 }

@@ -8,9 +8,10 @@ namespace WhatsApp.Messages
 {
     public class MessageInteractive : MessageBase
     {
-        public MessageInteractive(string to) : base("interactive", to)
+        protected MessageInteractive(string to) : base("interactive", to)
         {
-
         }
+
+
     }
 }

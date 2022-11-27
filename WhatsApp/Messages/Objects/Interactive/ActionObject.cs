@@ -1,15 +1,18 @@
 ﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WhatsApp.Messages.Objects.Interactive
 {
     public class ActionObject
     {
+        protected ActionObject(string? button, IEnumerable<InteractiveButton>? buttons, string? catalogId, string? productRetailerId, IEnumerable<Section>? sections) 
+        {
+            Button = button;
+            Buttons = buttons;
+            CatalogId = catalogId;
+            ProductRetailerId = productRetailerId;
+            Sections = sections;
+        }
+
         [JsonProperty("button")]
         public string? Button;
         
@@ -20,6 +23,14 @@ namespace WhatsApp.Messages.Objects.Interactive
         public string? CatalogId;
         
         [JsonProperty("product_retailer_id")] 
-        public string? ProductRetailerId;        
+        public string? ProductRetailerId;
+
+        [JsonProperty("sections")]
+        public IEnumerable<Section>? Sections;
+
+        public static ActionObject ProductButton(string catalogId, string productId)
+        {
+            return new ActionObject(null, null, catalogId, productId, null);
+        }
     }
 }

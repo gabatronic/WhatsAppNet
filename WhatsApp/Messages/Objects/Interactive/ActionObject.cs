@@ -32,5 +32,16 @@ namespace WhatsApp.Messages.Objects.Interactive
         {
             return new ActionObject(null, null, catalogId, productId, null);
         }
+
+        public static ActionObject ProductList(string catalogId, IEnumerable<Section> sections)
+        {
+            return new ActionObject(null, null, catalogId, null, sections);
+        }
+
+        public static ActionObject MessageList(IEnumerable<Section> sections)
+        {
+            return new ActionObject(null, null, null, null, sections);
+        }
+
     }
 }

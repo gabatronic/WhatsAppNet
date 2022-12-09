@@ -1,17 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using WhatsApp.Messages.Objects;
+using WhatsApp.Messages.Objects.Interactive;
 
 namespace WhatsApp.Messages
 {
-    public class MessageInteractive : MessageBase
+    public abstract class MessageInteractive : MessageBase
     {
-        protected MessageInteractive(string to) : base("interactive", to)
+        [JsonProperty("interactive")]
+        public InteractiveObject Interactive;
+
+        protected MessageInteractive(string to, InteractiveObject interactive) : base("interactive", to)
         {
+            Interactive = interactive;
         }
+    }
 
+    public class MessageProduct : MessageInteractive
+    {
+        public MessageProduct(string to, string catalgoId, string productId, string description, string? footerText = null)
+             : base(to, new SingleProduct(catalgoId, productId, description, footerText))
+        {   
+        }
+    }
 
+    public class MessageMultiProduct : MessageInteractive
+    {
+        public MessageMultiProduct(string to, string catalogId, string headerText, string? bodyText, string? footerText = null)
+            : base (to, new MultiProduct(new TextHeader(headerText), catalogId, bodyText, footerText))
+        {            
+        }
     }
 }

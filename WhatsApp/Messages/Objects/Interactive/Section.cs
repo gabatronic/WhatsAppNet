@@ -9,7 +9,7 @@ namespace WhatsApp.Messages.Objects.Interactive
         public string? Title;
 
         [JsonProperty("rows")]
-        public IEnumerable<Row>? Rows;
+        public IList<Row>? Rows;
 
         [JsonProperty("product_items")]
         [JsonConverter(typeof(ProductItemSerializer<IEnumerable<string>>))]

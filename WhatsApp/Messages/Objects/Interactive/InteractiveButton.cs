@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using WhatsApp.Converters;
 
 namespace WhatsApp.Messages.Objects.Interactive
 {
@@ -7,16 +8,14 @@ namespace WhatsApp.Messages.Objects.Interactive
         [JsonProperty("type")]
         public string Type => "reply";
 
-        [JsonProperty("title")]
-        public string Title;
+        [JsonProperty("reply")]        
+        [JsonConverter(typeof(ReplyButtonConverter<Tuple<string, string>>))]
+        public Tuple<string, string> Reply;
+        
 
-        [JsonProperty("id")]
-        public string Id;
-
-        public InteractiveButton(string title, string id) 
-        { 
-            Title = title;
-            Id = id;
+        public InteractiveButton(string title, string id)         
+        {
+            Reply = Tuple.Create(id, title);            
         }
     }
 }

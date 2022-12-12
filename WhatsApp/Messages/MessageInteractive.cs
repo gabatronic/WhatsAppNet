@@ -27,7 +27,23 @@ namespace WhatsApp.Messages
     {
         public MessageMultiProduct(string to, string catalogId, string headerText, string? bodyText, string? footerText = null)
             : base (to, new MultiProduct(new TextHeader(headerText), catalogId, bodyText, footerText))
-        {            
+        {
+        }
+
+        public void AddProdut(string title, IEnumerable <string> productsIds)
+        {
+            (Interactive as MultiProduct)?.AddSection(title, productsIds);
+        }
+    }
+
+    public class MessageButtonList : MessageInteractive
+    {
+        public MessageButtonList(string to, string buttonText) : base(to, new ReplyButton(buttonText))
+        {
+        }
+        public void AddButton(string id, string title)
+        {
+            (Interactive as ReplyButton)?.AddButton(id, title);
         }
     }
 }
